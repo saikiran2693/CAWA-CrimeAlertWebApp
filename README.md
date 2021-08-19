@@ -1,0 +1,2 @@
+# CAWA-CrimeAlertWebApp
+The project titled “crime alert” is a web-based application. This application allows the registered user to report a crime without fear. This will effectively address the problem. In addition, this app also enables the user to send an emergency email asking for help to five registered emails selected by the user as emergency contacts with a tap of just one panic button. This project has several tools that will help a user in case of an emergency.
