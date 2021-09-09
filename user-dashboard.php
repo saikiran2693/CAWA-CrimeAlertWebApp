@@ -75,9 +75,19 @@
     <?php include_once "footer.php" ?>
 </div>
 
-<?php
-
-?>
+<script>
+    function sendMessage() {
+        document.getElementById('btnsendmail').disabled=true;
+        const xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById('btnsendmail').disabled=false;
+                alert(this.response);
+            }
+        };
+        xhttp.open("GET", "sendEmail.php",true);
+        xhttp.send();
+    }
 </script>
 </body>
 </html>
