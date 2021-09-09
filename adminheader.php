@@ -45,6 +45,9 @@ if (!isset($_SESSION['admin_email'])) {
             <li class="nav-item">
                 <a class="text-white nav-link" href="admin-viewMy-report.php">My Crime Report</a>
             </li>
+            <li class="nav-item">
+                <a class="text-white nav-link" target="_blank" href="view-all-reports.php">Crime Reports</a>
+            </li>
 
             <li class="nav-item">
                 <a class="text-white nav-link" href="admin-change-password.php">Change Password</a>

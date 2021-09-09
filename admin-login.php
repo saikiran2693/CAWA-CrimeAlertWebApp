@@ -7,7 +7,7 @@ if (isset($_REQUEST['login'])) {
 
     $username = $_REQUEST['username'];
     $password = $_REQUEST['password'];
-    $password = md5($password);
+    $password = ($password);
 
     $select = "SELECT * FROM `admin` WHERE username='$username'";
     $run = mysqli_query($conn, $select);
