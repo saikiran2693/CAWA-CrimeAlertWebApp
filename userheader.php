@@ -34,9 +34,15 @@ if (!isset($_SESSION['EmailUser'])) {
             <li class="nav-item">
                 <a class="text-white nav-link" href="view-my-report.php">My Crime Reports</a>
             </li>
+            <li class="nav-item">
+                <a class="text-white nav-link" target="_blank" href="view-all-reports.php">Crime Reports</a>
+            </li>
 
             <li class="nav-item">
                 <a class="text-white nav-link" href="user-profile.php">My Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="text-white nav-link" href="other-services.php">Other Services</a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
