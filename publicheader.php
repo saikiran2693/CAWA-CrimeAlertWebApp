@@ -12,26 +12,27 @@
         <!--        <ul class="navbar-nav mx-auto">-->
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="text-white nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+                <a class="text-white nav-link" id="home" href="index.php">Home <span class="sr-only">(current)</span></a>
             </li>
 
             <li class="nav-item">
-                <a class="text-white nav-link" href="view-all-reports.php">Crime Report's</a>
+                <a class="text-white nav-link" id="crimereport" href="view-all-reports.php">Crime Report's</a>
             </li>
 
             <li class="nav-item">
-                <a class="text-white nav-link" href="privacy-policy.php">Privacy Policy</a>
+                <a class="text-white nav-link" id="privacypolicy" href="privacy-policy.php">Privacy Policy</a>
+            </li>
+            <li class="nav-item">
+                <a class="text-white nav-link" id="adminlogin" href="admin-login.php">Admin Login</a>
             </li>
 
             <li class="nav-item">
-                <a class="text-white nav-link" href="admin-login.php">Admin Login</a>
+                <a class="text-white nav-link" id="usersignup" href="user-signup.php">User Signup</a>
             </li>
-
             <li class="nav-item">
-                <a class="text-white nav-link" href="user-signup.php">User Signup</a>
+                <a class="text-white nav-link" id="userlogin" href="user-login.php">User Login</a>
             </li>
         </ul>
     </div>
 </nav>
 <!-- //HEADER-->
-<?php   ?>

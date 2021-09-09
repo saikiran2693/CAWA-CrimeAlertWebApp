@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Crime Report's</title>
+    <title>privacy policy</title>
 
     <?php
     include_once 'linkFiles.php';
