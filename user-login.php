@@ -7,7 +7,7 @@ $email = $password = $passworderror = $emailerror = '';
 if (isset($_POST['userlogin'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
-    $password = md5($password);
+    $password = ($password);
 
     $query = "select * from users where email='$email'";
     $data = mysqli_query($conn, $query);
