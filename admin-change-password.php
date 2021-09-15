@@ -3,6 +3,42 @@
 include_once "connection.php";
 ?>
 
+<?php
+$errorMsg = $oldpassword = "";
+
+if ((isset($_REQUEST['update']))) {
+    $username = $_SESSION['admin_username'];
+
+    $oldpassword = $_REQUEST['oldpassword'];
+    $oldpassword = ($oldpassword);
+
+    $newpassword = $_REQUEST['newpassword'];
+    $confirmpassword = $_REQUEST['confirmpassword'];
+
+    $select = "SELECT * FROM `admin` WHERE username='$username'";
+    $run = mysqli_query($conn, $select);
+
+    if (mysqli_num_rows($run) > 0) {
+        $row = mysqli_fetch_assoc($run);
+
+        if ($row['password'] == $oldpassword) {
+            if ($newpassword == $confirmpassword) {
+                $newpassword = ($newpassword);
+                $update = "UPDATE admin SET password='$newpassword' where username='$username'";
+                $go = mysqli_query($conn, $update);
+
+                $errorMsg = "success";
+                $oldpassword = "";
+            } else {
+                $errorMsg = "notmatch";
+            }
+        } else {
+            $errorMsg = "invpass";
+        }
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,6 +70,16 @@ include_once "connection.php";
                 <div class="form-group">
                     <input id="oldpassword" name="oldpassword" type="password" class="form-control"
                            placeholder="Enter Old Password...">
+
+                    <?php
+                    if ($errorMsg != "") {
+                        if ($errorMsg == "invpass") {
+                            ?>
+                            <p class="text-danger">*Invalid Current Password !!</p>
+                            <?php
+                        }
+                    }
+                    ?>
                 </div>
 
                 <div class="form-group">
@@ -44,10 +90,30 @@ include_once "connection.php";
                 <div class="form-group">
                     <input id="confirmpassword" name="confirmpassword" type="password" class="form-control"
                            placeholder="Enter Confirm New Password...">
+
+                    <?php
+                    if ($errorMsg != "") {
+                        if ($errorMsg == "notmatch") {
+                            ?>
+                            <p class="text-danger">*New Password & Confirm Password must be same !!</p>
+                            <?php
+                        }
+                    }
+                    ?>
                 </div>
 
                 <div class="form-group">
                     <button type="submit" name="update" class="btn btn-primary btn-block">Update Password</button>
+
+                    <?php
+                    if ($errorMsg != "") {
+                        if ($errorMsg == "success") {
+                            ?>
+                            <p class="text-success font-weight-bold mt-2">Password Updated.</p>
+                            <?php
+                        }
+                    }
+                    ?>
                 </div>
             </div>
         </form>
