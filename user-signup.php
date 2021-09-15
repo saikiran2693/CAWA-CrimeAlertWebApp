@@ -7,7 +7,8 @@ if (isset($_POST['usersignup'])) {
     $email = $_POST['email'];
     $name = $_POST['name'];
     $gender = $_POST['gender'];
-    $password = $_POST['password'];
+    $password = $_POST['password'];    
+    $confirmpassword = $_POST['confirmpassword'];
     $mobileno = $_POST['mobileno'];
     $address = $_POST['address'];
     $tempPath = $_FILES['photo']['tmp_name'];
@@ -26,9 +27,22 @@ if (isset($_POST['usersignup'])) {
             move_uploaded_file($tempPath, $pathPhoto);
         }
     }
-
-    $password = md5($password);
-
+    if(preg_match("/[a-z]/i", $mobileno)){
+        $error="alphabet are not allowed in phone number";
+    }
+    if ($password != '') {
+        if (strlen($password)<6)
+        {
+            $error = 'Minimum length of password must be 6';
+        }
+        if ($password != $confirmpassword) {
+            $error = 'password & confirm password not match';
+        } else {
+            $password=($password);
+        }
+    }
+    if ($error == '')
+    {
     $query = "select * from users where email='$email'";
     $data = mysqli_query($conn, $query);
     if (mysqli_num_rows($data) == 0) {
@@ -42,6 +56,7 @@ if (isset($_POST['usersignup'])) {
     } else {
         $emailerror = "Email Already Exist";
     }
+}
 }
 
 ?>
@@ -106,7 +121,8 @@ if (isset($_POST['usersignup'])) {
     <!-- SIGNUP-->
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data" id="signupForm">
         <div class="row">
-            <div class="col-lg-6 form-group">
+            <div class="col-6 offset-3">
+            <div class="col-lg-12 form-group">
                 <input data-rule-required="true" data-rule-email="true" type="email" name="email"
                        value="<?php echo $email; ?>" id="email"
                        class="form-control"
@@ -121,39 +137,35 @@ if (isset($_POST['usersignup'])) {
                 ?>
             </div>
 
-            <div class="col-lg-6 form-group">
+            <div class="col-lg-12 form-group">
                 <input data-rule-required="true" type="text" name="name" id="name"
                        value="<?php echo $name; ?>" class="form-control" placeholder="Enter Name...">
             </div>
 
-            <div class="col-lg-6 form-group">
+            <div class="col-lg-12 form-group">
                 <input data-rule-required="true" type="password" name="password" id="password" class="form-control"
                        placeholder="Enter Password...">
             </div>
 
-            <div class="col-lg-6 form-group">
+            <div class="col-lg-12 form-group">
                 <input data-rule-required="true" type="password" name="confirmpassword" id="confirmpassword"
                        class="form-control"
                        placeholder="Enter Confirm Password...">
             </div>
 
-            <div class="col-lg-4 form-group">
+            <div class="col-lg-12 form-group">
                 <label>Gender</label>
-                <input type="radio" name="gender" <?php if ($gender == 'Male') {
-                    echo 'checked';
-                } ?> value="Male"> Male
-                <input type="radio" name="gender" value="Female" <?php if ($gender == 'Female') {
-                    echo 'checked';
-                } ?> > Female
+                <input type="radio" name="gender" checked value="Male"> Male
+                <input type="radio" name="gender" value="Female"  > Female
             </div>
 
-            <div class="col-lg-4 form-group">
+            <div class="col-lg-12 form-group">
                 <input data-rule-required="true" type="tel" id="mobileno" value="<?php echo $mobileno; ?>"
                        name="mobileno" class="form-control"
                        placeholder="Enter Mobile Number...">
             </div>
 
-            <div class="col-lg-4 form-group">
+            <div class="col-lg-12 form-group">
                 <input data-rule-required="true" type="file" class="form-control" name="photo" id="photo">
             </div>
 
@@ -171,6 +183,7 @@ if (isset($_POST['usersignup'])) {
                     <?php
                 }
                 ?>
+            </div>
             </div>
         </div>
     </form>

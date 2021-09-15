@@ -28,7 +28,7 @@ if (isset($_POST['update'])) {
         if ($password != $confirmpassword) {
             $errormsg = 'password & confirm password not match';
         } else {
-            $password=md5($password);
+            $password=($password);
             $subquery = ",password='$password'";
         }
     }
@@ -47,8 +47,6 @@ if (isset($_POST['update'])) {
             move_uploaded_file($tempPath, $pathPhoto);
             $subquery .= ",photo='$pathPhoto'";
         }
-
-
     }
     if ($errormsg == '') {
         $update = "UPDATE `users` SET `name`='$name',`gender`='$gender',`mobileno`='$mobileno',`address`='$address' $subquery WHERE `email`='$email'";
@@ -56,11 +54,7 @@ if (isset($_POST['update'])) {
         if (mysqli_query($conn, $update)) {
             $msg = "Profile Updated";
         }
-
-
     }
-
-
 }
 
 $query = "select * from users where email='$email'";
@@ -74,30 +68,31 @@ $row = mysqli_fetch_assoc($data);
     <h2 class="text-center text-underline mb-3">My Profile</h2>
     <!-- SIGNUP-->
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
+    <div class="col-6 offset-3">
         <img src="<?php echo $row['photo']; ?>" alt="Profile Image" width="150" height="150" class="mb-3">
 
         <div class="row">
-            <div class="col-lg-6 form-group">
+            <div class="col-lg-12 form-group">
                 <input readonly type="email" name="email" class="form-control" placeholder="Enter Email..."
                        value="<?php echo $email; ?>">
             </div>
 
-            <div class="col-lg-6 form-group">
+            <div class="col-lg-12 form-group">
                 <input type="text" class="form-control" name="name" placeholder="Enter Name..."
                        value="<?php echo $row['name']; ?>">
             </div>
 
-            <div class="col-lg-6 form-group">
+            <div class="col-lg-12 form-group">
                 <input type="password" name="newpassword" class="form-control" placeholder="Enter  Password...">
             </div>
 
-            <div class="col-lg-6 form-group">
+            <div class="col-lg-12 form-group">
                 <input type="password" name="confirmpassword" class="form-control"
                        placeholder="Enter Confirm Password...">
             </div>
 
-            <div class="col-lg-4 form-group">
-                <label>Gender</label>
+            <div class="col-lg-12 form-group">
+                <label>Gender:</label>
                 <input type="radio" <?php if ($row['gender'] == 'Male') {
                     echo 'checked';
                 } ?> value="Male" name="gender"> Male
@@ -106,12 +101,12 @@ $row = mysqli_fetch_assoc($data);
                 } ?> value="Female" name="gender"> Female
             </div>
 
-            <div class="col-lg-4 form-group">
+            <div class="col-lg-12 form-group">
                 <input type="tel" class="form-control" required name="mobileno" value="<?php echo $row['mobileno']; ?>"
                        placeholder="Enter Mobile Number...">
             </div>
 
-            <div class="col-lg-4 form-group">
+            <div class="col-lg-12 form-group">
                 <input type="file" class="form-control" name="photo">
             </div>
 
@@ -131,6 +126,7 @@ $row = mysqli_fetch_assoc($data);
                 }
                 ?>
             </div>
+        </div>
         </div>
     </form>
     <!-- SIGNUP-->
