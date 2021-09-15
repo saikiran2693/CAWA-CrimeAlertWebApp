@@ -1,44 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Other Services</title>
 
-    <?php
-    include_once 'linkFiles.php';
-    ?>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Other Services</title>
 
-<!-- HEADER-->
-<?php include "userheader.php"; ?>
-<!-- //HEADER-->
+        <?php
+        include_once 'linkFiles.php';
+        ?>
+    </head>
 
-<div class="container my-5">
-    <h2 class="text-center text-underline mb-3">Other Services</h2>
+    <body>
 
-    <div class="row">
-        <div class="col-lg-6">
-            <img src="img/privacy-policy.jpg" style="width: 100%;border-radius: 10px" alt="Privacy Policy">
+        <!-- HEADER-->
+        <?php include "userheader.php"; ?>
+        <!-- //HEADER-->
+
+        <div class="container my-5">
+            <h2 class="text-center text-underline mb-3">Other Services</h2>
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <img src="img/privacy-policy.jpg" style="width: 100%;border-radius: 10px;height: 80%" alt="Privacy Policy">
+                </div>
+                <div class="col-lg-6">
+                    <p>
+                        In case of all fire, police or medical emergencies, call 911 to contact help. Almost all areas of Canada are covered by this emergency help line; however there may be some remote rural areas where there are local numbers to call. All urban and suburban areas are covered by the 911 code system.
+
+                        All phone calls to 9-1-1 are free, including calls made by pay phone or cell phone.  Please note that calls must be of an urgent nature, such as: if you have witnessed a crime that has just occurred or is still in progress; if you see an uncontrolled fire; if medical help is immediately required; if someone is trapped, drowning or taken a serious fall (think life and limb); if something catastrophic has occurred that has the potential to become much worse or could endanger human life (e.g.: landslide on a road, tree down over power lines, flooding) . Do not call 9-1-1 to obtain information, to make a complaint, to report a power outage, or for highway or weather information.The police will respond and you will be fined for abusing emergency services.
+
+                        When you reach the 9-1-1 centre, you will likely be asked to state the nature of your emergency: fire, police, or ambulance. You will then be asked to give the full details of your emergency. DO NOT HANG UP ON 9-1-1 until the 9-1-1 operator tells you to; only the 9-1-1 operator knows when enough information has been gathered about your emergency and its location. You should not hang up even if you feel you dialed 9-1-1 in error; in many jurisdictions, 9-1-1 operators are required to take action on all 9-1-1 calls, even if the caller hung up the phone without speaking.
+                    </p>
+                </div>
+            </div>
         </div>
-        <div class="col-lg-6">
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
-                into electronic typesetting, remaining essentially unchanged.</p>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
-                into electronic typesetting, remaining essentially unchanged.</p>
+
+        <!-- Footer -->
+        <div class="fixed-bottom">
+            <?php include "footer.php"; ?>
         </div>
-    </div>
-</div>
+        <!-- Footer -->
 
-<!-- Footer -->
-<div class="fixed-bottom">
-    <?php include "footer.php"; ?>
-</div>
-<!-- Footer -->
+    </body>
 
-</body>
 </html>

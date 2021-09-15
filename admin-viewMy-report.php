@@ -35,6 +35,29 @@
             </tr>
             </thead>
             <tbody>
+            <?php
+            $srno = 1;
+            include_once 'connection.php';
+            $userEmail = $_SESSION['admin_email'];
+
+            $select = "SELECT `crid`, `user_email`, `dateofcrime`, TIME_FORMAT(timeofcrime,'%h:%i:%s %p') as timeofcrime, `typeofactivity`, `typeofcrime`, `crimedetails`, `reported_at`, `status` FROM `crime_report` where user_email='$userEmail'";
+            $data = mysqli_query($conn, $select);
+            $srno = 1;
+            while ($row = mysqli_fetch_array($data)) {
+                ?>
+                <tr class="text-center">
+                    <td><?php echo $srno; ?></td>
+                    <td><?php echo $row['typeofactivity'] ?></td>
+                    <td><?php echo $row['typeofcrime'] ?></td>
+                    <td><?php echo $row['crimedetails'] ?></td>
+                    <td><?php echo $row['dateofcrime'] ?></td>
+                    <td><?php echo $row['timeofcrime'] ?></td>
+
+                </tr>
+                <?php
+                $srno++;
+            }
+            ?>
 
             </tbody>
         </table>
